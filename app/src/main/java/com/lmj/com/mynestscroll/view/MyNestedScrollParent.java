@@ -17,7 +17,8 @@ public class MyNestedScrollParent extends RelativeLayout implements NestedScroll
     private String Tag = "MyNestedScrollParent";
 //    private TextView tv;
     private int titleRowNum;
-    private MyNestedScrollChildL nsc ;
+    private MyNestedScrollChildL nsc0;
+    private MyNestedScrollChildL nsc1;
     private NestedScrollingParentHelper mParentHelper;
 //    private int tvHeight;
 
@@ -51,7 +52,8 @@ public class MyNestedScrollParent extends RelativeLayout implements NestedScroll
     protected void onFinishInflate() {
         super.onFinishInflate();
 //        tv = (TextView) getChildAt(1);
-        nsc = (MyNestedScrollChildL) getChildAt(2);
+        nsc0 = (MyNestedScrollChildL) getChildAt(1);
+        nsc1 = (MyNestedScrollChildL) getChildAt(2);
        /* tv.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -102,11 +104,20 @@ public class MyNestedScrollParent extends RelativeLayout implements NestedScroll
            consumed[1]=length;
             scroller.startScroll(0, getScrollY(), 0, length);
             invalidate();
-        }else if(dy < 0 && getScrollY()>0&&nsc.getScrollY()==0){ // 下滑
-            consumed[1]=length;
-            scroller.startScroll(0, getScrollY(), 0, -length);
-            invalidate();
+        }else if(dy < 0 && getScrollY()>0){ // 下滑
+           if(target == nsc0 || (target == nsc1 && nsc1.getScrollY() == 0)){
+               consumed[1]=length;
+               scroller.startScroll(0, getScrollY(), 0, -length);
+               invalidate();
+           }
         }
+        int num = -1;
+        if(target == nsc0){
+            num = 1;
+        }else if(target == nsc1){
+            num = 2;
+        }
+        Log.e("Bill3", "nsc0:::" + nsc0.getScrollY() + "nsc1:" + nsc1.getScrollY() + "|view:" + num);
 
 
         /*if(showImg(dy)||hideImg(dy)){//如果父亲自己要滑动，则拦截
@@ -117,7 +128,7 @@ public class MyNestedScrollParent extends RelativeLayout implements NestedScroll
 //            invalidate();
             Log.i("onNestedPreScroll","Parent滑动："+dy);
         }*/
-        Log.e("Bill", "NestedScrollingParent onNestedPreScroll--getScrollY():"+getScrollY()+",dx:"+dx+",dy:"+dy+",consumed:"+consumed);
+        Log.e("Bill2", "NestedScrollingParent onNestedPreScroll--getScrollY():"+getScrollY()+",dx:"+dx+",dy:"+dy+",consumed:"+nsc1.getScrollY());
     }
 
     @Override
@@ -155,7 +166,7 @@ public class MyNestedScrollParent extends RelativeLayout implements NestedScroll
      */
     public boolean showImg(int dy){
         if(dy<0){
-            if(getScrollY()>0&&nsc.getScrollY()==0){//如果parent外框，还可以往上滑动
+            if(getScrollY()>0&&nsc1.getScrollY()==0){//如果parent外框，还可以往上滑动
                 return true;
             }
         }
