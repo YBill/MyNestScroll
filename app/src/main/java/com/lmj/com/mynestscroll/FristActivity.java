@@ -13,6 +13,7 @@ import android.widget.Button;
 
 public class FristActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private Button noTitleBtn;
     private Button oneTitleBtn;
     private Button twoTitleBtn;
     private Button threeTitleBtn;
@@ -24,12 +25,14 @@ public class FristActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frist);
+        noTitleBtn = (Button) findViewById(R.id.btn_zero);
         oneTitleBtn = (Button) findViewById(R.id.btn_one);
         twoTitleBtn = (Button) findViewById(R.id.btn_two);
         threeTitleBtn = (Button) findViewById(R.id.btn_three);
         fourTitleBtn = (Button) findViewById(R.id.btn_four);
         fiveTitleBtn = (Button) findViewById(R.id.btn_five);
         sixTitleBtn = (Button) findViewById(R.id.btn_six);
+        noTitleBtn.setOnClickListener(this);
         oneTitleBtn.setOnClickListener(this);
         twoTitleBtn.setOnClickListener(this);
         threeTitleBtn.setOnClickListener(this);
@@ -41,31 +44,35 @@ public class FristActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if (v == oneTitleBtn) {
+        if (v == noTitleBtn) {
+            String title = "";
+            gotoActivity(title, title);
+        } else if (v == oneTitleBtn) {
             String title = "我是一个标题";
-            gotoActivity(title);
+            gotoActivity(title, title);
         } else if (v == twoTitleBtn) {
             String title = "我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题";
-            gotoActivity(title);
+            gotoActivity(title, title);
         } else if (v == threeTitleBtn) {
             String title = "我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题";
-            gotoActivity(title);
+            gotoActivity(title, title);
         } else if (v == fourTitleBtn) {
             String title = "我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题";
-            gotoActivity(title);
+            gotoActivity(title, title);
         } else if (v == fiveTitleBtn) {
             String title = "我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题";
-            gotoActivity(title);
+            gotoActivity(title, title);
         } else if (v == sixTitleBtn) {
             String title = "我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题我是一个标题";
-            gotoActivity(title);
+            gotoActivity(title, title);
         }
 
     }
 
-    private void gotoActivity(String title){
+    private void gotoActivity(String title, String content){
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("title", title);
+        intent.putExtra("content", content);
         startActivity(intent);
     }
 

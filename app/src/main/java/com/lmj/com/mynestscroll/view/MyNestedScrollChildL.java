@@ -35,38 +35,38 @@ public class MyNestedScrollChildL extends LinearLayout implements NestedScrollin
 
     @Override
     public void setNestedScrollingEnabled(boolean enabled) {
-        Log.e("Bill", "NestedScrollingChild setNestedScrollingEnabled:" + enabled);
+        Log.e("BillChild", "NestedScrollingChild setNestedScrollingEnabled:" + enabled);
         mScrollingChildHelper.setNestedScrollingEnabled(enabled);
     }
 
     @Override
     public boolean isNestedScrollingEnabled() {
-        Log.e("Bill", "NestedScrollingChild isNestedScrollingEnabled");
+        Log.e("BillChild", "NestedScrollingChild isNestedScrollingEnabled");
         return mScrollingChildHelper.isNestedScrollingEnabled();
     }
 
     @Override
     public boolean startNestedScroll(int axes) {
-        Log.e("Bill", "NestedScrollingChild startNestedScroll :" + axes);
+        Log.e("BillChild", "NestedScrollingChild startNestedScroll :" + axes);
         return mScrollingChildHelper.startNestedScroll(axes);
     }
 
     @Override
     public void stopNestedScroll() {
-        Log.e("Bill", "NestedScrollingChild stopNestedScroll");
+        Log.e("BillChild", "NestedScrollingChild stopNestedScroll");
         mScrollingChildHelper.stopNestedScroll();
     }
 
     @Override
     public boolean hasNestedScrollingParent() {
-        Log.e("Bill", "NestedScrollingChild hasNestedScrollingParent");
+        Log.e("BillChild", "NestedScrollingChild hasNestedScrollingParent");
         return mScrollingChildHelper.hasNestedScrollingParent();
     }
 
     @Override
     public boolean dispatchNestedScroll(int dxConsumed, int dyConsumed, int dxUnconsumed,
                                         int dyUnconsumed, int[] offsetInWindow) {
-        Log.e("Bill", "NestedScrollingChild dispatchNestedScroll:dxConsumed:" + dxConsumed + "," +
+        Log.e("BillChild", "NestedScrollingChild dispatchNestedScroll:dxConsumed:" + dxConsumed + "," +
                 "dyConsumed:" + dyConsumed + ",dxUnconsumed:" + dxUnconsumed + ",dyUnconsumed:" +
                 dyUnconsumed + ",offsetInWindow:" + offsetInWindow);
         return mScrollingChildHelper.dispatchNestedScroll(dxConsumed, dyConsumed,
@@ -75,19 +75,19 @@ public class MyNestedScrollChildL extends LinearLayout implements NestedScrollin
 
     @Override
     public boolean dispatchNestedPreScroll(int dx, int dy, int[] consumed, int[] offsetInWindow) {
-        Log.e("Bill", "NestedScrollingChild dispatchNestedPreScroll:dx" + dx + ",dy:" + dy + ",consumed:" + consumed + ",offsetInWindow:" + offsetInWindow);
+        Log.e("BillChild", "NestedScrollingChild dispatchNestedPreScroll:dx" + dx + ",dy:" + dy + ",consumed:" + consumed + ",offsetInWindow:" + offsetInWindow);
         return mScrollingChildHelper.dispatchNestedPreScroll(dx, dy, consumed, offsetInWindow);
     }
 
     @Override
     public boolean dispatchNestedFling(float velocityX, float velocityY, boolean consumed) {
-        Log.e("Bill", "NestedScrollingChild dispatchNestedFling:velocityX:" + velocityX + ",velocityY:" + velocityY + ",consumed:" + consumed);
+        Log.e("BillChild", "NestedScrollingChild dispatchNestedFling:velocityX:" + velocityX + ",velocityY:" + velocityY + ",consumed:" + consumed);
         return mScrollingChildHelper.dispatchNestedFling(velocityX, velocityY, consumed);
     }
 
     @Override
     public boolean dispatchNestedPreFling(float velocityX, float velocityY) {
-        Log.e("Bill", "NestedScrollingChild dispatchNestedPreFling:velocityX:" + velocityX + ",velocityY:" + velocityY);
+        Log.e("BillChild", "NestedScrollingChild dispatchNestedPreFling:velocityX:" + velocityX + ",velocityY:" + velocityY);
         return mScrollingChildHelper.dispatchNestedPreFling(velocityX, velocityY);
     }
 

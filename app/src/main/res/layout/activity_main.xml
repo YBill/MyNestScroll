@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#ff0000"
     tools:context="com.lmj.com.mynestscroll.MainActivity">
 
     <ImageView
@@ -21,53 +21,71 @@
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
 
-        <com.lmj.com.mynestscroll.view.MyNestedScrollParent
-            android:id="@+id/parent"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="251dp"
-            android:layout_above="@id/bottom"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_above="@id/bottom">
 
             <View
+                android:id="@+id/view_bottom"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="100dp"
-                android:background="#a0000000" />
+                android:layout_height="100dp"
+                android:layout_gravity="bottom"
+                android:background="#a0000000"
+                android:alpha="0"
+                android:visibility="visible" />
 
-            <com.lmj.com.mynestscroll.view.MyNestedScrollChildL
-                android:id="@+id/myrel"
+            <com.lmj.com.mynestscroll.view.MyNestedScrollParent
+                android:id="@+id/parent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
+                android:layout_height="251dp"
+                android:layout_alignParentBottom="true"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_title"
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="100dp"
+                    android:background="#a0000000" />
+
+                <com.lmj.com.mynestscroll.view.MyNestedScrollChildL
+                    android:id="@+id/myrel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="我是一个标题啦啦啦我是一个标题啦啦啦我是一个标题啦啦啦我是一个标题啦啦啦我是一个标题啦啦啦"
-                    android:textColor="#ffffff"
-                    android:textSize="19sp" />
-            </com.lmj.com.mynestscroll.view.MyNestedScrollChildL>
+                    android:layout_marginTop="100dp"
+                    android:orientation="vertical">
 
-            <com.lmj.com.mynestscroll.view.MyNestedScrollChildL
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/myrel"
-                android:layout_marginTop="17dp"
-                android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="我是一个标题啦啦啦我是一个标题啦啦啦我是一个标题啦啦啦我是一个标题啦啦啦我是一个标题啦啦啦"
+                        android:textColor="#ffffff"
+                        android:textSize="19sp" />
+                </com.lmj.com.mynestscroll.view.MyNestedScrollChildL>
 
-                <TextView
-                    android:layout_width="match_parent"
+                <com.lmj.com.mynestscroll.view.MyNestedScrollChildL
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:lineSpacingExtra="3dp"
-                    android:text="@string/contenttv"
-                    android:textColor="#ffffff"
-                    android:textSize="15sp" />
+                    android:layout_below="@id/myrel"
+                    android:layout_marginTop="17dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="3dp"
+                        android:text="@string/contenttv"
+                        android:textColor="#ffffff"
+                        android:textSize="15sp" />
 
 
-            </com.lmj.com.mynestscroll.view.MyNestedScrollChildL>
-        </com.lmj.com.mynestscroll.view.MyNestedScrollParent>
+                </com.lmj.com.mynestscroll.view.MyNestedScrollChildL>
+            </com.lmj.com.mynestscroll.view.MyNestedScrollParent>
+
+
+        </FrameLayout>
 
 
         <View

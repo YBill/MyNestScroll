@@ -72,39 +72,51 @@ public class MyNestedScrollParent extends RelativeLayout implements NestedScroll
     @Override
     public boolean onStartNestedScroll(View child, View target, int nestedScrollAxes) {
         // 嵌套滑动的第一个方法
-        Log.e("Bill", "NestedScrollingParent onStartNestedScroll");
+        Log.e("BillParent", "NestedScrollingParent onStartNestedScroll");
         return true;
     }
 
     @Override
     public void onNestedScrollAccepted(View child, View target, int nestedScrollAxes) {
-        Log.e("Bill", "NestedScrollingParent onNestedScrollAccepted" + "child:" + child + ",target:" + target + ",nestedScrollAxes:" + nestedScrollAxes);
+        Log.e("BillParent", "NestedScrollingParent onNestedScrollAccepted" + "child:" + child + ",target:" + target + ",nestedScrollAxes:" + nestedScrollAxes);
         mParentHelper.onNestedScrollAccepted(child, target, nestedScrollAxes);
     }
 
     @Override
     public void onStopNestedScroll(View target) {
-        Log.e("Bill", "NestedScrollingParent onStopNestedScroll--target:" + target);
+        Log.e("BillParent2", "NestedScrollingParent onStopNestedScroll--target:" + slideTag);
         mParentHelper.onStopNestedScroll(target);
+        onSlideListener.slideFinish(slideTag);
     }
 
     @Override
     public void onNestedScroll(View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
-        Log.e("Bill", "NestedScrollingParent onNestedScroll--" + "target:" + target + ",dxConsumed" + dxConsumed + ",dyConsumed:" + dyConsumed
+        Log.e("BillParent", "NestedScrollingParent onNestedScroll--" + "target:" + target + ",dxConsumed" + dxConsumed + ",dyConsumed:" + dyConsumed
                 + ",dxUnconsumed:" + dxUnconsumed + ",dyUnconsumed:" + dyUnconsumed);
     }
 
+    private onSlideListener onSlideListener;
+    public void setOnSlideListener(onSlideListener onSlideListener){
+        this.onSlideListener = onSlideListener;
+    }
+    public interface onSlideListener{
+        void slideFinish(int slideTag);
+    }
+
+    private int slideTag; // 滑动标签
     @Override
     public void onNestedPreScroll(View target, int dx, int dy, int[] consumed) {
         if (dy > 0 && getScrollY() < length) { // 上拉
             consumed[1] = length;
             scroller.startScroll(0, getScrollY(), 0, length);
             invalidate();
+            slideTag = 1;
         } else if (dy < 0 && getScrollY() > 0) { // 下滑
             if (target == nsc0 || (target == nsc1 && nsc1.getScrollY() == 0)) {
                 consumed[1] = length;
                 scroller.startScroll(0, getScrollY(), 0, -length);
                 invalidate();
+                slideTag = 2;
             }
         }
         int num = -1;
@@ -113,7 +125,7 @@ public class MyNestedScrollParent extends RelativeLayout implements NestedScroll
         } else if (target == nsc1) {
             num = 2;
         }
-        Log.e("Bill3", "nsc0:::" + nsc0.getScrollY() + "nsc1:" + nsc1.getScrollY() + "|view:" + num);
+        Log.e("BillParent", "nsc0:::" + nsc0.getScrollY() + "nsc1:" + nsc1.getScrollY() + "|view:" + num);
 
 
         /*if(showImg(dy)||hideImg(dy)){//如果父亲自己要滑动，则拦截
@@ -124,24 +136,24 @@ public class MyNestedScrollParent extends RelativeLayout implements NestedScroll
 //            invalidate();
             Log.i("onNestedPreScroll","Parent滑动："+dy);
         }*/
-        Log.e("Bill2", "NestedScrollingParent onNestedPreScroll--getScrollY():" + getScrollY() + ",dx:" + dx + ",dy:" + dy + ",consumed:" + nsc1.getScrollY());
+        Log.e("BillParent", "NestedScrollingParent onNestedPreScroll--getScrollY():" + getScrollY() + ",dx:" + dx + ",dy:" + dy + ",consumed:" + nsc1.getScrollY());
     }
 
     @Override
     public boolean onNestedFling(View target, float velocityX, float velocityY, boolean consumed) {
-        Log.e("Bill", "NestedScrollingParent onNestedFling--target:" + target);
+        Log.e("BillParent", "NestedScrollingParent onNestedFling--target:" + target);
         return false;
     }
 
     @Override
     public boolean onNestedPreFling(View target, float velocityX, float velocityY) {
-        Log.e("Bill", "NestedScrollingParent onNestedPreFling--target:" + target);
+        Log.e("BillParent", "NestedScrollingParent onNestedPreFling--target:" + target);
         return false;
     }
 
     @Override
     public int getNestedScrollAxes() {
-        Log.e("Bill", "NestedScrollingParent getNestedScrollAxes");
+        Log.e("BillParent", "NestedScrollingParent getNestedScrollAxes");
         return 0;
     }
 

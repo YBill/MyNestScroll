@@ -7,6 +7,12 @@
     tools:context="com.lmj.com.mynestscroll.FristActivity">
 
     <Button
+        android:id="@+id/btn_zero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Title" />
+
+    <Button
         android:id="@+id/btn_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
