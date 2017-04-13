@@ -12,6 +12,9 @@
 
         </activity>
         <activity android:name=".FristActivity">
+
+        </activity>
+        <activity android:name=".SecondActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
