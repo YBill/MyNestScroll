@@ -71,7 +71,7 @@ public class ImageBottomLayout extends LinearLayout {
      *
      * @param title
      */
-    public void setTtitle(String title) {
+    public void setTitle(String title) {
         mTitleView.setText(title);
     }
 

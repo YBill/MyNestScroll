@@ -19,13 +19,15 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         mBottomLayout = (ImageBottomLayout) findViewById(R.id.bottom_layout);
-        mBottomLayout.setTtitle("这是一个Title");
-        mBottomLayout.postDelayed(new Runnable() {
+        mBottomLayout.setTitle("这是一个Title");
+        mBottomLayout.setContent(getString(R.string.large_text));
+        mBottomLayout.invalidate();
+        /*mBottomLayout.postDelayed(new Runnable() {
             @Override
             public void run() {
                 mBottomLayout.setContent(getString(R.string.large_text));
             }
-        }, 20);
+        }, 20);*/
 
     }
 

@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyNestScroll.iml" filepath="$PROJECT_DIR$/MyNestScroll.iml" />
+      <module fileurl="file://D:\workspace\MyNestScroll\MyNestScroll.iml" filepath="D:\workspace\MyNestScroll\MyNestScroll.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\workspace\MyNestScroll\app\app.iml" filepath="D:\workspace\MyNestScroll\app\app.iml" />
     </modules>
   </component>
 </project>
